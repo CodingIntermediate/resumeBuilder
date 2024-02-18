@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +16,7 @@
     <link rel="icon" href="img/core-img/favicon.ico">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'HomeUsers/Home/style.css' %}">
 
 </head>
 
@@ -877,7 +878,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="{% static 'HomeUsers/Home/js/jquery/jquery-2.2.4.min.js' %}"></script>
     <!-- Popper js -->
     <script src="js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap js -->
