@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registeration</title>
+</head>
+<body>
+    <form action="{% url 'userRegister' %}" method="POST" >
+        <!-- {% comment %} here the register name comes from the, urls that ius path name {% endcomment %} -->
+        {% csrf_token %}
+        {{ userforms.as_p }}
+        <button type="submit">Register</button>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'AdminHeader.html'%}
+{% block content%}
+{%load static%}
+
+
+<div class="right_col" role="main">  
+    <table border="1">
+        <tr>
+            <th>Organisation Category</th>
+            <th>Business Name</th>
+            <th>Address</th>
+            <th>States</th>
+            <th>Pincode</th>
+            <th>Number</th>
+            <th>Email</th>
+            <!-- <th>Status</th> -->
+        </tr>
+        {% for da in datas %}
+        <tr>
+            <td>{{da.Organization_Category}}</td>
+            <td>{{da.Business_Name}}</td>
+            <td>{{da.Address}}</td>
+            <td>{{da.States}}</td>
+            <td>{{da.Pincode}}</td>
+            <td>{{da.Number}}</td>
+            <td>{{da.Email}}</td>
+            <td>
+                {% if da.Status == '0' %}
+                <a href="../approve/{{da.regid}}"><button>Approve</button></a>  
+                {% elif da.Status == '1' %}
+                <a href="../reject/{{da.regid}}"><button>Reject</button></a>
+                {% endif %}
+            </td>
+            
+        </tr>
+        {% endfor %}
+    </table></div>
+ {% endblock %}
+
