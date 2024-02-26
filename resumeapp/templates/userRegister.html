@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registeration</title>
+    
 </head>
 <body>
     <form action="{% url 'userRegister' %}" method="POST" >
@@ -12,6 +13,5 @@
         {{ userforms.as_p }}
         <button type="submit">Register</button>
     </form>
-    
 </body>
 </html>

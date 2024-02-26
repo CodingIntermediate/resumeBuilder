@@ -15,7 +15,7 @@ class RegModel(models.Model):
     Status=models.CharField(default='0',max_length=5)
     usertype=models.CharField(max_length=100,default='company')
     
-# -------------------------------------------------------------------
+# -------------------------------------------------------------------1
 # this model is for users
 class UserModel(models.Model):
     userid=models.AutoField(primary_key=True)
@@ -27,10 +27,31 @@ class UserModel(models.Model):
     Conatact_Number=models.IntegerField(null=True)
     Email=models.EmailField(unique=True)
     Password=models.CharField(max_length=100)
+    Status=models.CharField(default='0',max_length=5)
     usertype=models.CharField(max_length=100,default='User')
 
-
-# a model for login(Comapanies) 
+# -------------------------------------------------------------------2
+# a model for login(Comapanies and users) 
 class LoginModel(models.Model):
      Email=models.EmailField(unique=True)
      Password=models.CharField(max_length=100)
+     
+# -------------------------------------------------------------------3   
+#create   a model for vacancyAdding
+class VacancyModel(models.Model):
+    #  foreign key have a default primary_key
+    regid= models.ForeignKey(RegModel, on_delete=models.CASCADE,null=True)
+    Job_Category=models.CharField(max_length=100)
+    Job_Name=models.CharField(max_length=100)
+    Salary=models.CharField(max_length=50)
+    Job_Details=models.CharField(max_length=50)
+    Last_Date_For_Application=models.CharField(max_length=50)
+# -------------------------------------------------------------------4  
+#create a class for jobApplication
+class JobApplication(models.Model):
+    application_id=models.AutoField(primary_key=True)
+    job_id=models.ForeignKey(VacancyModel, on_delete=models.CASCADE,null=True)
+    candidate_id=models.ForeignKey(UserModel, on_delete=models.CASCADE,null=True)
+    date=models.DateTimeField(auto_now_add=True)
+
+   

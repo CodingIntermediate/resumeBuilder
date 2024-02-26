@@ -1,21 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    {% load static %}
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link href="{% static '/register.css' %}"  rel="stylesheet"  >
+    <title>Company | Register</title>
+    <link rel="stylesheet"  href="{% static 'register.css' %}">
 </head>
 <body>
     <div class="container">
         <div class="content">
-            {% comment %} here the register name comes from the, urls that ius path name {% endcomment %}
             <form action="{% url 'register' %}" method="POST" >
                 {% csrf_token %}
                 {{ forms.as_p }} 
-                <button type="submit">Register</button>
+                <button type="submit" class='btn'>Sign Up</button>
             </form>
         </div>
     </div>

@@ -1,11 +1,8 @@
 from django import forms
-from .models import RegModel,UserModel,LoginModel
-
-
+from .models import RegModel,UserModel,LoginModel,VacancyModel
 # below regform class is for companies ,starts here
 class RegForm(forms.ModelForm):
     # above.modelform was in-built
-
     # below uppecases are  for dropdown selection
     STATES=(
         ('selected','Select'),
@@ -42,7 +39,7 @@ class RegForm(forms.ModelForm):
         }
 # above regform class is for ompanies ,ends here
 # # ------------------------------------------------------------------------------------------------------------------
-# below userform class is for users,starts here
+# below userForm class is for users,starts here
 class UserForm(forms.ModelForm):
     GENDER=(
         # ('selected','Select'),
@@ -65,8 +62,9 @@ class UserForm(forms.ModelForm):
             'Password':forms.PasswordInput()
         }     
 
-
-# for login(companies)
+# above userform class is for users,ends here
+# -------------------------------------------------------------------------------------
+# for login(companies and users)
 class companyLoginForm(forms.ModelForm):
     class Meta:
         model=LoginModel
@@ -84,3 +82,16 @@ class usersLoginForm(forms.ModelForm):
             'Email':forms.EmailInput(),
             'Password':forms.PasswordInput(),
         }     
+# -------------------------------------------------------------------------------------
+# create form for vacany
+class VacancyForm(forms.ModelForm):
+    class Meta:
+        model=VacancyModel
+        fields=['Job_Category','Job_Name','Salary','Job_Details','Last_Date_For_Application']   
+        widgets={
+            'Job_Category':forms.TextInput(),
+            'Job_Name':forms.TextInput(),
+            'Salary':forms.TextInput(),
+            'Job_Details':forms.TextInput(),
+            'Last_Date_For_Application':forms.TextInput(),
+        }

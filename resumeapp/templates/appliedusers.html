@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicants</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Conatact_Number</th>
+            <th>Education</th>
+            <th>Skills</th>
+        </tr>
+        <tr>
+            {% for ausers in appliedusers %}
+                <td>{{ ausers.Name }}</td>
+                <td>{{ ausers.Email }}</td>
+                <td>{{ ausers.Gender }}</td>
+                <td>{{ ausers.Contact_Number }}</td>
+                <td>{{ ausers.Education }}</td>
+                <td>{{ ausers.Skills }}</td>
+            {% endfor %}
+
+        </tr>
+    </table>
+</body>
+</html>
