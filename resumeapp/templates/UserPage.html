@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -10,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>One Music - Modern Music HTML5 Template</title>
+    <title>Candidate</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{% static 'HomeUsers/Home/img/core-img/favicon.ico' %}">
@@ -19,17 +18,16 @@
     <link rel="stylesheet" href="{% static 'HomeUsers/Home/style.css' %}">
 
 </head>
-
 <body>
     <!-- Preloader -->
-    <div class="preloader d-flex align-items-center justify-content-center">
+    <!-- <div class="preloader d-flex align-items-center justify-content-center">
         <div class="lds-ellipsis">
             <div></div>
             <div></div>
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> -->
 
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
@@ -61,31 +59,11 @@
                                 <ul>
                                     <li><a href="{% url 'UserPage' %}">Home</a></li>
                                     <li><a href="{% url 'Jobs' %}">Available Jobs</a></li>
-                                    <!-- <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="{% static 'HomeUsers/Home/index.html' %}">Home</a></li>
-                                            <li><a href="albums-store.html">Albums</a></li>
-                                            <li><a href="event.html">Events</a></li>
-                                            <li><a href="blog.html">News</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                        </ul>
-                                    </li> -->
+                                    <li><a href="{% url 'Appliedjobs' %}">Applied Jobs</a></li>      
+                                    <a href="{% url 'viewUserProfile' %}" class="btn btn-info">View Profile</a>  
+                                    <li><a href="{% url 'logouts' %}">Logout</a></li>
                                 </ul>
 
-                                <!-- Login/Register & Cart Button -->
-                                <!-- <div class="login-register-cart-button d-flex align-items-center">
-                                    Login/Register
-                                    <div class="login-register-btn mr-50">
-                                        <a href="login.html" id="loginBtn">Login / Register</a>
-                                    </div>
-
-                                    Cart Button
-                                    <div class="cart-btn">
-                                        <p><span class="icon-shopping-cart"></span> <span class="quantity">1</span></p>
-                                    </div>
-                                </div> -->
                             </div>
                             <!-- Nav End -->
 

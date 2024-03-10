@@ -34,8 +34,7 @@ class UserModel(models.Model):
 # a model for login(Comapanies and users) 
 class LoginModel(models.Model):
      Email=models.EmailField(unique=True)
-     Password=models.CharField(max_length=100)
-     
+     Password=models.CharField(max_length=100)  
 # -------------------------------------------------------------------3   
 #create   a model for vacancyAdding
 class VacancyModel(models.Model):
@@ -47,11 +46,17 @@ class VacancyModel(models.Model):
     Job_Details=models.CharField(max_length=50)
     Last_Date_For_Application=models.CharField(max_length=50)
 # -------------------------------------------------------------------4  
-#create a class for jobApplication
+#create a class for jobApplication for applied users
 class JobApplication(models.Model):
     application_id=models.AutoField(primary_key=True)
     job_id=models.ForeignKey(VacancyModel, on_delete=models.CASCADE,null=True)
     candidate_id=models.ForeignKey(UserModel, on_delete=models.CASCADE,null=True)
     date=models.DateTimeField(auto_now_add=True)
-
-   
+    canacel=models.CharField(default='0',max_length=3)
+# -------------------------------------------------------------------5 
+class InterviewDetails(models.Model):
+    # pk,date,interview details,
+    intrw_id=models.AutoField(primary_key=True)
+    date=models.DateField(auto_now_add=True)
+    application_id=models.ForeignKey(JobApplication,on_delete=models.CASCADE,null=True)
+    interviewDetails=models.CharField(max_length=500)

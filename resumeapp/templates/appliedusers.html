@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Applicants</title>
-</head>
-<body>
-    <table border="1">
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Gender</th>
-            <th>Conatact_Number</th>
-            <th>Education</th>
-            <th>Skills</th>
-        </tr>
-        <tr>
-            {% for ausers in appliedusers %}
-                <td>{{ ausers.Name }}</td>
-                <td>{{ ausers.Email }}</td>
-                <td>{{ ausers.Gender }}</td>
-                <td>{{ ausers.Contact_Number }}</td>
-                <td>{{ ausers.Education }}</td>
-                <td>{{ ausers.Skills }}</td>
-            {% endfor %}
 
-        </tr>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applicants</title>
+</head>
+
+<body>
+  <center>
+    <h2>User Details</h2>
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Job Status</th>
+      </tr>
+      {% for ausers in appliedusers %}
+      <tr>
+        <td>{{ ausers.candidate_id.Name }}</td>
+        <td>{{ ausers.candidate_id.Email }}</td>
+        {% if ausers.canacel == '1' %}
+        <td>Cancelled</td>
+        {% else %}
+        <td>Application Active</td>
+        {% endif %}
+        <td>
+          <a href="../AddInterviewDetails/{{ ausers.application_id }}">Add Interview Details</a>
+        </td>
+        <td>
+          <a href="../editInterviewDetails/{{ ausers.intrw_id }}">Edit</a>
+        </td>
+      </tr>
+      {% endfor %}
     </table>
+  </center>
 </body>
+
 </html>

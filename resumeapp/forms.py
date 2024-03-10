@@ -1,5 +1,5 @@
 from django import forms
-from .models import RegModel,UserModel,LoginModel,VacancyModel
+from .models import RegModel,UserModel,LoginModel,VacancyModel,InterviewDetails
 # below regform class is for companies ,starts here
 class RegForm(forms.ModelForm):
     # above.modelform was in-built
@@ -95,3 +95,13 @@ class VacancyForm(forms.ModelForm):
             'Job_Details':forms.TextInput(),
             'Last_Date_For_Application':forms.TextInput(),
         }
+# ------------------------------------------------------------------------------------
+# create a form for interviewdetails form
+class InterviewForm(forms.ModelForm):
+    class Meta:
+        model=InterviewDetails
+        fields=['interviewDetails']
+        widgets={
+            'interviewDetails':forms.Textarea(),
+        }
+        

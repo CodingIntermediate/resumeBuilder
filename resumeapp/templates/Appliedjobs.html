@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Jobs</title>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <th>Job Category</th>
+            <th>Job Name</th>
+            <th>Salary</th>
+            <th>Job Details</th>
+            <th>Last Date For Application</th>
+        </tr>
+        {% for d in data %}
+        <tr>
+            <td>{{ d.job_id.Job_Category }}</td>
+            <td>{{ d.job_id.Job_Name }}</td>
+            <td>{{ d.job_id.Salary }}</td>
+            <td>{{ d.job_id.Job_Details }}</td>
+            <td>{{ d.job_id.Last_Date_For_Application }}</td>
+            <!-- create a canacel button -->
+            <td>
+                
+                {% if d.canacel == '0' %}
+                    <a href="../cancel/{{ d.application_id }}" >Cancel</a>
+                {% elif d.canacel == '1' %}
+                    <a href="../cancel/{{ d.application_id }}" >Canceled</a>
+                {% endif %}
+
+            </td>
+            <td>
+                <a href="../InterviewDetails/{{ d.application_id }}">Interview Details</a>
+            </td> 
+            
+
+        </tr>
+        {% endfor%}
+    </table>
+</body>
+
+</html>

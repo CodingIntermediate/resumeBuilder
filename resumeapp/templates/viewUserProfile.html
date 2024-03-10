@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <table border="1">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Date Of Birth</th>
+              <th>Education</th>
+              <th>Skills</th>
+              <th>Conatact Number</th>
+              <th>Email</th>
+              <th>Status</th>
+          </tr>
+        </thead>
+          {% for d in data %}
+          <tr>
+              <td>{{d.Name}}</td>
+              <td>{{d.Gender}}</td>
+              <td>{{d.Date_Of_Birth}}</td>
+              <td>{{d.Education}}</td>
+              <td>{{d.Skills}}</td>
+              <td>{{d.Conatact_Number}}</td>
+              <td>{{d.Email}}</td>
+              <td>
+                  <a href="../editUserProfile/{{ d.userid }}" class="btn btn-info">Edit</a>
+                  
+              </td>
+          </tr>  
+          {% endfor%}
+      </table>
+    </center>
+</body>
+</html>

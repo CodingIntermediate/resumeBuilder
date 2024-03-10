@@ -79,7 +79,7 @@
                             <td>{{d.Conatact_Number}}</td>
                             <td>{{d.Email}}</td>
                             <td>
-                                <a href="../edituser/{{ d.userid }}" class="btn btn-info">Edit</a>
+                                {% comment %}<a href="../edituser/{{ d.userid }}" class="btn btn-info">Edit</a> {% endcomment %}
                                 <a href="../deleteusers/{{ d.userid }}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>  
@@ -88,17 +88,13 @@
                   </div>
                 </div>
               </div>
-
-             
           </div>
         </div>
-
         <script>
           $(document).ready(function() {
               $('#datatable').DataTable();
           });
           </script>
         <!-- /page content -->
-       
 {% endblock %}
   

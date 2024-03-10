@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Details</title>
+
+  </head>
+
+<body>
+  
+      <form action="" method="POST">
+        {% csrf_token %}
+        {{ interw_details.as_p }}
+        <button type="submit" class='btn'>Add</button>
+      </form>
+   
+</body>
+</html>

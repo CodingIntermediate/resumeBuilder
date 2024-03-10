@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Me</title>
+</head>
+
+<body>
+    <center>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Organisation Category</th>
+                    <th>Business Name</th>
+                    <th>Address</th>
+                    <th>States</th>
+                    <th>Pincode</th>
+                    <th>Number</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+                {% for da in data %}
+                <tr>
+                    <td>{{ da.Organization_Category }}</td>
+                    <td>{{ da.Business_Name }}</td>
+                    <td>{{ da.Address }}</td>
+                    <td>{{ da.States }}</td>
+                    <td>{{ da.Pincode }}</td>
+                    <td>{{ da.Number }}</td>
+                    <td>{{ da.Email }}</td>
+                    <td>
+                        <a href="../editCompanyProfile/{{ da.regid }}" class="btn btn-info">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+        </table>
+    </center>
+
+</body>
+
+</html>

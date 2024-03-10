@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .import views  
+from.import views  
 urlpatterns=[
     
     # entire details are view only by AdminPanel
@@ -22,7 +22,8 @@ urlpatterns=[
     path('UserPage/',views.HomeUsers,name='UserPage'),
     path('CompanyPage/',views.CompanyPage,name='CompanyPage'),
     
-    path('edit/<int:regid>',views.edit,name='edit'),
+    # path('edit/<int:regid>',views.edit,name='edit'),
+    
     path('edituser/<int:userid>',views.edituser,name='edituser'),
     path('deletedataview/<int:regid>',views.deletedata,name='deletedataview'),
     path('deleteusers/<int:userid>',views.deleteusers,name='deleteusers'), 
@@ -33,12 +34,13 @@ urlpatterns=[
     # approve reject for users
     path('approveusers/<int:userid>',views.acceptusers,name='acceptusers'),
     path('rejectusers/<int:userid>',views.rejectusers,name='rejectusers'),
-    
+    # -------------------------------------------------
     # for vacancy
     path('Vacancy/',views.vacancyadding,name='Vacancy'), 
-    path('VacancyTable/',views.vacancy_view,name='VacancyTable'),
+    path('VacancyTable/',views.viewedByParticularCompanies,name='VacancyTable'),
     path('editvacancy/<int:pk>',views.editvacancy,name='editvacancy'),
     path('deletevacancy/<int:pk>',views.deletevacancy,name='deletevacancy'),
+    # -------------------------------------------------
     # for users
     path('Jobs/',views.Job,name='Jobs'),
     
@@ -49,5 +51,34 @@ urlpatterns=[
     path('',views.indexPage,name='index'), 
     
     # applicants
-    path('appliedusers/',views.appliedusers,name='appliedusers'),
+    path('Appliedusers/',views.appliedusers,name='Appliedusers'),
+    # logout path
+    path('logouts/',views.logouts,name='logouts'),
+    # -------------------------------------------------
+    # view Company profile
+    path('viewCompanyProfile/',views.comapanyProfile,name='viewCompanyProfile'),
+    # edit companyProfile
+    path('editCompanyProfile/<int:regid>',views.editCompanyProfile,name='editCompanyProfile'),
+    # -------------------------------------------------
+    # view user Profile
+    path('viewUserProfile',views.userProfile,name='viewUserProfile'),
+     # edit userProfile
+    path('editUserProfile/<int:userid>',views.editUserProfile,name='editUserProfile'),
+    # -------------------------------------------------
+    
+    # view applied jobs by  users
+    path('Appliedjobs/',views.viewappliedjobs,name='Appliedjobs'),
+    # cancel jobs for users
+    path('cancel/<int:application_id>',views.cancel,name='cancel'),
+    
+    
+    # addinterviewDetails View
+    path('AddInterviewDetails/<int:application_id>',views.addInterviewDetails,name='AddInterviewDetails'),
+    
+    # interviewDetails View
+    path('InterviewDetails/<int:application_id>',views.interviewDetails,name='InterviewDetails'),
+    
+    # edit interview details
+    path('editInterviewDetails/<int:intrw_id>',views.editInterviewDetails,name='editInterviewDetails'),
+    
 ] 
