@@ -2,7 +2,6 @@ from django.urls import path
 
 from.import views  
 urlpatterns=[
-    
     # entire details are view only by AdminPanel
     path('AdminPanel/',views.admin,name='AdminPanel'),
     # this one is for compamy registeration
@@ -21,16 +20,12 @@ urlpatterns=[
     # path('sucess/',views.sucess,name='sucess'),
     path('UserPage/',views.HomeUsers,name='UserPage'),
     path('CompanyPage/',views.CompanyPage,name='CompanyPage'),
-    
     # path('edit/<int:regid>',views.edit,name='edit'),
-    
     path('edituser/<int:userid>',views.edituser,name='edituser'),
     path('deletedataview/<int:regid>',views.deletedata,name='deletedataview'),
     path('deleteusers/<int:userid>',views.deleteusers,name='deleteusers'), 
-    
     path('companyuserviews',views.company_user_view,name='companyuserviews'),
     # path('card',views.card,name='card'),
-
     # approve reject for users
     path('approveusers/<int:userid>',views.acceptusers,name='acceptusers'),
     path('rejectusers/<int:userid>',views.rejectusers,name='rejectusers'),
@@ -71,7 +66,6 @@ urlpatterns=[
     # cancel jobs for users
     path('cancel/<int:application_id>',views.cancel,name='cancel'),
     
-    
     # addinterviewDetails View
     path('AddInterviewDetails/<int:application_id>',views.addInterviewDetails,name='AddInterviewDetails'),
     
@@ -79,6 +73,12 @@ urlpatterns=[
     path('InterviewDetails/<int:application_id>',views.interviewDetails,name='InterviewDetails'),
     
     # edit interview details
-    path('editInterviewDetails/<int:intrw_id>',views.editInterviewDetails,name='editInterviewDetails'),
+    path('editInterviewDetails/<int:application_id>',views.editInterviewDetails,name='editInterviewDetails'),
+    
+    # create a path for search
+    path('Jobs/',views.searchjobs,name='Jobs'),
+    
+    path('search/', views.searchjobs, name='search'),
+
     
 ] 

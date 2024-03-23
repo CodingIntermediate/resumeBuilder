@@ -3,6 +3,7 @@ from .forms import RegForm,UserForm,companyLoginForm,usersLoginForm,VacancyForm,
 from .models import RegModel,UserModel,VacancyModel,JobApplication,InterviewDetails
 from datetime import datetime
 from django.contrib.auth import logout
+from django.db.models import Q
 # below code is for company registeration view by admin
 def companyRegister(request):
     if request.method == 'POST':
@@ -304,17 +305,33 @@ def interviewDetails(request, application_id):
     # user = UserModel.objects.get(userid=user_id)
     interview_details = InterviewDetails.objects.filter(application_id=application_id)
     return render(request, 'InterviewDetails.html', {'interDetails': interview_details}) 
-
+# ------------------------------------------------------------------
 # create a function for editInterviewDetails
-def editInterviewDetails(request,intrw_id):
+def editInterviewDetails(request,application_id):
     if request.method == 'POST':
-        mydata = InterviewDetails.objects.get(intrw_id=intrw_id)
+        mydata = InterviewDetails.objects.get(application_id=application_id)
         form = InterviewForm(request.POST, instance=mydata)
         if form.is_valid():
             form.save()
-            return redirect('InterviewDetails')  # Redirect to a success page after saving
+            return redirect('Appliedusers')  # Redirect to a success page after saving
     else:
-        mydat=InterviewDetails.objects.get(intrw_id=intrw_id)
+        mydat=InterviewDetails.objects.get(application_id=application_id)
         form = InterviewForm(instance=mydat)
-    return render(request,'EditInterviewDetails.html',{'forms': form})
-    
+    return render(request,'EditInterviewDetails.html',{'interviewEdit': form})
+# ------------------------------------------------------------------
+# create a view for search jobs
+def searchjobs(request):
+    query = request.GET.get('search', '')  # Get the search term from the GET request
+    if query:  # If there's a search term
+        jobs = VacancyModel.objects.filter(
+            Q(Job_Category__icontains=query) |
+            Q(Job_Name__icontains=query) |
+            Q(Job_Details__icontains=query)
+        )
+    else:  # If there's no search term
+        jobs = VacancyModel.objects.all()  # Display all jobs or none, as per your preference
+
+    return render(request, 'Jobs.html', {'jobs': jobs, 'query': query})
+
+# ------------------------------------------------------------------
+

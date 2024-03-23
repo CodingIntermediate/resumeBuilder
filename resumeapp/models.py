@@ -54,6 +54,7 @@ class JobApplication(models.Model):
     date=models.DateTimeField(auto_now_add=True)
     canacel=models.CharField(default='0',max_length=3)
 # -------------------------------------------------------------------5 
+# create a model for InterviewDetails
 class InterviewDetails(models.Model):
     # pk,date,interview details,
     intrw_id=models.AutoField(primary_key=True)
