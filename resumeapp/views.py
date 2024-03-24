@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .forms import RegForm,UserForm,companyLoginForm,usersLoginForm,VacancyForm,InterviewForm
-from .models import RegModel,UserModel,VacancyModel,JobApplication,InterviewDetails
+from .models import RegModel,UserModel,VacancyModel,JobApplication,InterviewDetails,ChatModel
 from datetime import datetime
 from django.contrib.auth import logout
 from django.db.models import Q
+from django.http import HttpResponse
+# from django.contrib import message
 # below code is for company registeration view by admin
 def companyRegister(request):
     if request.method == 'POST':
@@ -204,7 +206,7 @@ def apply(request,pk):
     applicant_id=request.session.get('userid')
     applicant=UserModel.objects.get(pk=applicant_id)
     vid=VacancyModel.objects.get(pk=pk)
-    application=JobApplication(job_id=vid,candidate_id=applicant)
+    application=JobApplication(job_id=vid,application_id=applicant)
     application.save()
     return redirect('Jobs')
 # ================================================================================
@@ -215,6 +217,8 @@ def appliedusers(request):
     comp=VacancyModel.objects.get(regid=regid)
     # print(comp)
     appliedusers=JobApplication.objects.filter(job_id=comp)
+    # my_var=UserModel.objects.all()
+    # paired_data=zip(appliedusers,my_var)
     # print(appliedusers)
     return render(request,'Appliedusers.html',{'appliedusers': appliedusers})
 # not completed
@@ -334,4 +338,24 @@ def searchjobs(request):
     return render(request, 'Jobs.html', {'jobs': jobs, 'query': query})
 
 # ------------------------------------------------------------------
+# create a chat page
+def chat(request,application_id):
+    # Assuming 'regid' is stored in the session to identify the sender
+    sender_id = request.session.get('regid')
+    sender = get_object_or_404(RegModel, regid=sender_id)
+    
+    # Retrieve the JobApplication and indirectly the receiver
+    job_application = get_object_or_404(JobApplication, application_id=application_id)
+    receiver = job_application.candidate_id    
 
+    if request.method == 'POST':
+        message = request.POST.get('msg')
+        # Create the chat message
+        ChatModel.objects.create(sender=sender, receiver=receiver, message=message)
+        return HttpResponse("Message sent successfully")
+    else:
+        # GET request handling or initial page load
+        return render(request, 'chat.html') 
+# ------------------------------------------------------------------
+
+#

@@ -77,8 +77,11 @@ urlpatterns=[
     
     # create a path for search
     path('Jobs/',views.searchjobs,name='Jobs'),
-    
     path('search/', views.searchjobs, name='search'),
+    # chat
+    path('chat/<int:application_id>',views.chat,name='chat'),
+    # # mssage send 
+    # path('chat/', views.chat_view, name='chat'),
+    # path('chatmessage/<int:application_id>/', views.chatmessage, name='chatmessage'),
 
-    
 ] 

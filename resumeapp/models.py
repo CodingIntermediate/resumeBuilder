@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 # Create your models here.
 # this model is created for companies
 class RegModel(models.Model):
@@ -61,3 +62,12 @@ class InterviewDetails(models.Model):
     date=models.DateField(auto_now_add=True)
     application_id=models.ForeignKey(JobApplication,on_delete=models.CASCADE,null=True)
     interviewDetails=models.CharField(max_length=500)
+# -------------------------------------------------------------------6
+# create a model for ChatModel     
+class ChatModel(models.Model):
+    # id=models.AutoField(primary_key=True)
+    sender=models.ForeignKey(RegModel, related_name='sent_messages', on_delete=models.CASCADE)
+    receiver=models.ForeignKey(UserModel, related_name='received_messages', on_delete=models.CASCADE)
+    message=models.CharField(max_length=500)
+    date=models.DateTimeField(auto_now_add=True,null=True)
+
