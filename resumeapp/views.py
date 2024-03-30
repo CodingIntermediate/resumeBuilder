@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .forms import RegForm,UserForm,companyLoginForm,usersLoginForm,VacancyForm,InterviewForm
-from .models import RegModel,UserModel,VacancyModel,JobApplication,InterviewDetails,ChatModel
+from .models import RegModel,UserModel,VacancyModel,JobApplication,InterviewDetails,ChatModel,ChatModelnew
 from datetime import datetime
 from django.contrib.auth import logout
 from django.db.models import Q
