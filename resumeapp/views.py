@@ -357,5 +357,22 @@ def chat(request,application_id):
         # GET request handling or initial page load
         return render(request, 'chat.html') 
 # ------------------------------------------------------------------
-
+# ------------------------------------------------------------------
+#create a complaint view
+def complaint(request):
+    if request.method == 'POST':
+        form = ComplaintForm(request.POST)
+        if form.is_valid():
+            sender_id = request.session.get('userid')
+            if sender_id:
+                complnt = form.save(commit=False)
+                # Fetch the UserModel instance using sender_id
+                sender_instance = get_object_or_404(UserModel, pk=sender_id)
+                # Assign the UserModel instance to complnt.sender_id
+                complnt.sender_id = sender_instance
+                complnt.save()
+                return redirect('UserPage')
+    else:
+        form = ComplaintForm()
+    return render(request, 'complaint.html', {'form': form})
 #
