@@ -70,4 +70,10 @@ class ChatModel(models.Model):
     receiver=models.ForeignKey(UserModel, related_name='received_messages', on_delete=models.CASCADE)
     message=models.CharField(max_length=500)
     date=models.DateTimeField(auto_now_add=True,null=True)
-
+# -------------------------------------------------------------------7
+ #create a model for ComplaintModel
+class ComplaintModel(models.Model):
+    # id=models.AutoField(primary_key=True)
+    sender_id=models.ForeignKey(UserModel, related_name='sent_complaints', on_delete=models.CASCADE)
+    complaint=models.CharField(max_length=500)
+    date=models.DateTimeField(auto_now_add=True,null=True)
